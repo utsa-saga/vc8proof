@@ -16,4 +16,4 @@ chmod +x ./solve.sh
 
 ./solve.sh
 
-./solve.sh will create 23 processes to verify all 9 * 10 * 11 * 12 = 11880 cases. 
+Note that ./solve.sh will create 23 processes to verify all 9 * 10 * 11 * 12 = 11880 cases. 
