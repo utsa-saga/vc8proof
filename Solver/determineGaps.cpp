@@ -442,7 +442,7 @@ bool isNotRealizable(vector<string> *currentPoints, int caseNumber){
                                 break;
                             }
                         }
-                        else if((gkI > vp && leftMostPointGuardSees[k] <= vp) || (gkI > g2I && leftMostPointGuardSees[k] > vp && cannotBlockWithTerrain[vpS +","+gkS] && higherGuard[g1S + "," + gkS] == gkS)){
+                        else if((gkI > vp && leftMostPointGuardSees[k] <= vp) || (gkI > g2I && cannotBlockWithTerrain[vpS +","+gkS] && higherGuard[g1S + "," + gkS] == gkS)){
                             int rightMostGuardPointSees = vpS[vpS.size()-1] - 'A';
                             if(rightMostGuardPointSees >= k){
                                 blockerCanBeG1 = false;
@@ -515,7 +515,7 @@ bool isNotRealizable(vector<string> *currentPoints, int caseNumber){
                             continue;
                         if(tooFarAway[secondHash] != "yes")
                             continue;
-                        if((gkI < vp && rightMostPointGuardSees[k] >= vp) || (gkI < g1I && rightMostPointGuardSees[k] < vp && cannotBlockWithTerrain[gkS +"," + vpS] && higherGuard[gkS + "," + g2S] == gkS) ){
+                        if((gkI < vp && rightMostPointGuardSees[k] >= vp) || (gkI < g1I && cannotBlockWithTerrain[gkS +"," + vpS] && higherGuard[gkS + "," + g2S] == gkS) ){
                             int leftMostGuardPointSees = vpS[0] - 'A';
                             if(leftMostGuardPointSees <= k){
                                 blockerCanBeG2 = false;
