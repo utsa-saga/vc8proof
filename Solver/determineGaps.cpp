@@ -61,7 +61,7 @@ int main(int argc, char *argv[]){
             time(&end);
             double runningTime = double(end - start);
             cout << "Case " << i << " couldn't fit all " << viewpointsAH.size() << " points.  Running Time: " << setprecision(2) << runningTime << " seconds." << endl;
-            string mvString = "mv " + fileName + " ../Orange256/";
+            string mvString = "mv " + fileName + " ../Solved/";
             if(system(mvString.c_str())){
                 cout << "Couldn't move file" << endl;
                 return -1;
