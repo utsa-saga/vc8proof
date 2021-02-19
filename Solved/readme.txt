@@ -1,0 +1,1 @@
+This folder is intend to save accepted cases. 
