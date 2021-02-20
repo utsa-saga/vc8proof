@@ -4,13 +4,7 @@ This program is intend to show that there does not exist a candidate ordering th
 
 How to execute: 
 
-cd Unsolved/
-
-g++ generatecases.cpp -o generatecases
-
-./generatecases
-
-cd ../Solver/
+cd Solver/
 
 chmod +x ./solve.sh
 
