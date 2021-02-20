@@ -1,0 +1,12 @@
+A
+ABDFH
+B
+C
+ABDEGH
+ACFH
+D
+ACEGH
+E
+F
+G
+H
