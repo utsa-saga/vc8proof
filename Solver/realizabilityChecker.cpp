@@ -365,7 +365,28 @@ bool isNotRealizable(vector<string> *currentPoints, int caseNumber){
         }
     }
     //End Higher Guard
-    
+
+    //If g1 and g2 shouldn't be blocked by terrain, then no ``midguard'' between them can be higher than both of them.
+    for(int i=0; i<guardIndices.size(); i++){
+        int g1I = guardIndices[i];
+        string g1S = (*currentPoints)[g1I];
+        for(int j= i+2; j<guardIndices.size(); j++){
+            int g2I = guardIndices[j];
+            string g2S = (*currentPoints)[g2I];
+            if(!cannotBlockWithTerrain[g1S + "," + g2S])
+                continue;
+            for(int k=i+1; k<j; k++){
+                int midGuardI = guardIndices[k];
+                string midGuardS = (*currentPoints)[midGuardI]; // i < k(midguard) < j
+                if(higherPoint[g1S + "," + midGuardS] == midGuardS && higherPoint[midGuardS + "," + g2S] == midGuardS){
+                    return true;
+                }
+            }
+        }
+    }
+    //End midGuard higher than both.
+
+    //Simply stating that a point cannot be too far away from itself.
     for (int i = 0; i < (*currentPoints).size()-1; i++)
     {
     	string pS = (*currentPoints)[i];
@@ -375,6 +396,7 @@ bool isNotRealizable(vector<string> *currentPoints, int caseNumber){
     }
 
     
+    //Set tooFarAway and highePoint for guard/viewpoint pairs.
     for (int i = 0; i < (*currentPoints).size()-1; i++)
     {
         for (int j = i+1; j < (*currentPoints).size(); j++) // i < j
@@ -487,25 +509,7 @@ bool isNotRealizable(vector<string> *currentPoints, int caseNumber){
         }
     }
     
-    //If g1 and g2 shouldn't be blocked by terrain, then no midguard can be higher than both of them.
-    for(int i=0; i<guardIndices.size(); i++){
-        int g1I = guardIndices[i];
-        string g1S = (*currentPoints)[g1I];
-        for(int j= i+2; j<guardIndices.size(); j++){
-            int g2I = guardIndices[j];
-            string g2S = (*currentPoints)[g2I];
-            if(!cannotBlockWithTerrain[g1S + "," + g2S])
-                continue;
-            for(int k=i+1; k<j; k++){
-                int midGuardI = guardIndices[k];
-                string midGuardS = (*currentPoints)[midGuardI]; // i < k(midguard) < j
-                if(higherPoint[g1S + "," + midGuardS] == midGuardS && higherPoint[midGuardS + "," + g2S] == midGuardS){
-                    return true;
-                }
-            }
-        }
-    }
-    //End midGuard higher than both.
+    
     
     //Check to see if there is a guard that is low outside of a disk but needs to pierce a line segment inside that disk.
     for(int i=0; i<guardIndices.size(); i++){
