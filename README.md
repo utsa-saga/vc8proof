@@ -3,6 +3,8 @@ This program is intend to show that there does not exist a candidate ordering th
 
 How to execute:
 
+unzip Unsolved.zip
+
 cd Solver/
 
 chmod +x ./solve.sh
